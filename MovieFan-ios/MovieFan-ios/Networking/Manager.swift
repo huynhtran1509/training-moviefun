@@ -21,13 +21,7 @@ class NetworkManager: RxManager {
         observers = [Logger()]
     }
 
-    override func rx_response(_ requestConvertible: URLRequestConvertible) -> Observable<OperaResult> {
-        let response = super.rx_response(requestConvertible)
-        return SessionController.sharedInstance.refreshToken().flatMap { _ in response }
-    }
 }
-
-final class Route {}
 
 struct Logger: Opera.ObserverType {
     func willSendRequest(_ alamoRequest: Alamofire.Request, requestConvertible: URLRequestConvertible) {

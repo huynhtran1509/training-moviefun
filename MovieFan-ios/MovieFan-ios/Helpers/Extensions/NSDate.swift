@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import Decodable
 
 extension Date {
 
     func dblog() -> String {
         return Constants.Formatters.debugConsoleDateFormatter.string(from: self)
     }
-
+    
 }

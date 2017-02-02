@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupCrashlytics()
         setupNetworking()
         stylizeEurekaRows()
+        setupDecoders()
         
         // Register the supported push notifications interaction types.
         // Shows alert view askying for allowed push notification types

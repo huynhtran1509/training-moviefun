@@ -6,17 +6,16 @@
 //  Copyright © 2016 'Xmartlabs SRL'. All rights reserved.
 //
 
-import Foundation
-import Fabric
 import Alamofire
-import Eureka
 import Crashlytics
+import Eureka
+import Foundation
 
 extension AppDelegate {
 
     func setupCrashlytics() {
-        Fabric.with([Crashlytics.self])
-        Fabric.sharedSDK().debug = Constants.Debug.crashlytics
+        // Fabric.with([Crashlytics.self])
+        // Fabric.sharedSDK().debug = Constants.Debug.crashlytics
     }
 
     // MARK: Alamofire notifications
@@ -29,17 +28,9 @@ extension AppDelegate {
     }
 
     func requestDidComplete(_ notification: Notification) {
-        guard let task = notification.userInfo?[Notification.Key.Task] as? URLSessionTask, let response = task.response as? HTTPURLResponse else {
+        guard let task = notification.userInfo?[Notification.Key.Task] as? URLSessionTask, let _ = task.response as? HTTPURLResponse else {
             DEBUGLog("Request object not a task")
             return
-        }
-        if Constants.Network.successRange ~= response.statusCode {
-            if let token = response.allHeaderFields["Set-Cookie"] as? String {
-                SessionController.sharedInstance.token = token
-            }
-        } else if response.statusCode == Constants.Network.Unauthorized && SessionController.sharedInstance.isLoggedIn() {
-            SessionController.sharedInstance.clearSession()
-            // here you should implement AutoLogout: Transition to login screen and show an appropiate message
         }
     }
 
@@ -61,5 +52,9 @@ extension AppDelegate {
             cell.contentView.layoutMargins.left = genericHorizontalMargin
             cell.height = { 58 }
         }
+    }
+    
+    func setupDecoders() {
+        Date.decoder = Date.decoder(using: Constants.Formatters.MovieDbAPIDateFormatter)
     }
 }

@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 import Opera
 
-extension Route {
+/*
+ extension Route {
 
     enum User: RouteType, URLRequestSetup {
 
@@ -57,3 +58,4 @@ extension Route {
         }
     }
 }
+*/

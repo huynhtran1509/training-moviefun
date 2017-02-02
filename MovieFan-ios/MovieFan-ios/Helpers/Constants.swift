@@ -13,8 +13,9 @@ import XLSwiftKit
 struct Constants {
 
 	struct Network {
-        static let baseUrl = URL(string: "https://api.github.com")!
+        static let baseUrl = URL(string: "https://api.themoviedb.org/3/")!
         static let AuthTokenName = "Authorization"
+        static let ApiKey = "31eb416f5a4beac0a44a19daf3c26823"
         static let SuccessCode = 200
         static let successRange = 200..<300
         static let Unauthorized = 401
@@ -24,8 +25,6 @@ struct Constants {
 
     struct Keychain {
         static let serviceIdentifier = UIApplication.bundleIdentifier
-        static let sessionToken = "session_token"
-        static let deviceToken = "device_token"
     }
     
     struct Formatters {
@@ -35,6 +34,12 @@ struct Constants {
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
             formatter.timeZone = TimeZone(identifier: "UTC")!
             return formatter
+        }()
+        
+        static let MovieDbAPIDateFormatter: DateFormatter = {
+            let f = DateFormatter()
+            f.dateFormat = "yyyy-MM-dd"
+            return f
         }()
         
     }

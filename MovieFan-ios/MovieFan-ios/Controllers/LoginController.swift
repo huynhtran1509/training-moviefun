@@ -36,7 +36,7 @@ class LoginController: FormViewController {
                     $0.title = "Password:"
                     $0.placeholder = "insert password here.."
                 }
-                <<< ButtonRow() {
+                <<< ButtonRow {
                     $0.title = "Log in"
                     }
                     .onCellSelection { [weak self] _, _ in
@@ -65,21 +65,24 @@ class LoginController: FormViewController {
             showError("Please enter the username and password")
             return
         }
-
+        
         LoadingIndicator.show()
-        Route.User.login(username: username, password: password)
+       /* User.login(username: username, password: password)
             .rx_anyObject()
             .do(onError: { [weak self] (error: Error) in
                 LoadingIndicator.hide()
                 self?.showError("Error", message: (error as? OperaError)?.debugDescription ?? "Sorry user login does not work correctly")
             })
             .flatMap() { _ in
-                return Route.User.getInfo(username: username).rx_object()
+                //return Route.User.getInfo(username: username).rx_object()
             }
             .subscribe(onNext: { [weak self] (user: User) in
                 LoadingIndicator.hide()
                 self?.showError("Great", message: "You have been successfully logged in")
+            }, onError: { error in
+                print(error)
             })
             .addDisposableTo(disposeBag)
+ */
     }
 }
