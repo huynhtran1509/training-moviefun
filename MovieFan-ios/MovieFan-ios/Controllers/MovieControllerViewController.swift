@@ -33,4 +33,8 @@ class MovieControllerViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    public func selectedFilters(genre: Int, year: Date, adultContent: Bool) {
+        
+    }
+    
 }

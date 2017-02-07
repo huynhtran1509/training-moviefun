@@ -52,7 +52,7 @@ DEPENDENCIES:
   - KeychainAccess (~> 3.0)
   - Nimble (~> 5.0)
   - NVActivityIndicatorView (~> 3.0)
-  - Opera (from `https://github.com/xmartlabs/Opera.git`, branch `Swift3`)
+  - Opera (from `https://github.com/xmartlabs/Opera.git`, branch `fixes`)
   - Quick (~> 1.0)
   - R.swift (~> 3.0)
   - RealmSwift (~> 2.0)
@@ -66,7 +66,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Opera:
-    :branch: Swift3
+    :branch: fixes
     :git: https://github.com/xmartlabs/Opera.git
   WebLinking:
     :branch: master
@@ -74,7 +74,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Opera:
-    :commit: c81c84dad0d9a96bb7f6017fdd6a30f23f4492d7
+    :commit: fd1d428f463273fcfbb95eb633fa93bba859f991
     :git: https://github.com/xmartlabs/Opera.git
   WebLinking:
     :commit: fddbacc30deab8afe12ce1d3b78bd27c593a0c29
@@ -107,6 +107,6 @@ SPEC CHECKSUMS:
   WebLinking: 3f71787c14a225148e8be29fe6e7c98597cbc459
   XLSwiftKit: 4d48322a602120dc6300d58d7fb07b873e223c1c
 
-PODFILE CHECKSUM: d3399f0e032e751c83bc65c4c040834f7385aa50
+PODFILE CHECKSUM: 9cefabe3f6c161e40c89ba46496102d90cc92f9b
 
 COCOAPODS: 1.1.1
