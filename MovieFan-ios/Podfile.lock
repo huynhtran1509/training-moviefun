@@ -36,6 +36,7 @@ PODS:
     - RxSwift (~> 3.0)
   - RxSwift (3.0.1)
   - SwiftDate (4.0.11)
+  - SwiftyJSON (3.1.4)
   - WebLinking (1.1.0)
   - XLSwiftKit (2.0.0)
 
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - RxCocoa (~> 3.0)
   - RxSwift (~> 3.0)
   - SwiftDate (~> 4.0)
+  - SwiftyJSON
   - WebLinking (from `https://github.com/kylef/WebLinking.swift`, branch `master`)
   - XLSwiftKit (~> 2.0)
 
@@ -104,9 +106,10 @@ SPEC CHECKSUMS:
   RxCocoa: 15a52fc590dcc700cb4a690a633b5c5184ce3a78
   RxSwift: af5680055c4ad04480189c52d28385b1029493a6
   SwiftDate: a36d5ce7c86bed3ed92b583ccbf15045f374ac65
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WebLinking: 3f71787c14a225148e8be29fe6e7c98597cbc459
   XLSwiftKit: 4d48322a602120dc6300d58d7fb07b873e223c1c
 
-PODFILE CHECKSUM: 9cefabe3f6c161e40c89ba46496102d90cc92f9b
+PODFILE CHECKSUM: b96396a2aa17de095445e8e77acb44687297c7a2
 
 COCOAPODS: 1.1.1

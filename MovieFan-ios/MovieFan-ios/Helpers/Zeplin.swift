@@ -28,6 +28,9 @@ extension UIColor {
         return UIColor(red: 255.0 / 255.0, green: 78.0 / 255.0, blue: 73.0 / 255.0, alpha: 1.0)
     }
     
+    class var mitWhite: UIColor {
+        return UIColor(white: 255.0 / 255.0, alpha: 1.0)
+    }
 }
 
 // Sample text styles

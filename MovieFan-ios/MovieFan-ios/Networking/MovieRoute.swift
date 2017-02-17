@@ -6,9 +6,9 @@
 //  Copyright © 2017 'Xmartlabs SRL'. All rights reserved.
 //
 
-import Foundation
-import Alamofire
+import UIKit
 import Opera
+import Alamofire
 
 struct TheMovieDbAPI {
     
@@ -18,11 +18,27 @@ struct TheMovieDbAPI {
 
 extension TheMovieDbAPI.Movies {
     
+    // MARK: - Movie routeType
     struct Discover: RouteType {
         
         var method: HTTPMethod { return .get }
         var path: String { return "discover/movie" }
+        var parameters: [String : Any]?
+        
+        init(parameters: [String: Any]) {
+            self.parameters = parameters
+            self.parameters?["api_key"] = Constants.Network.ApiKey
+        }
         
     }
-       
+    
+    // MARK: - Genre routeType
+    struct Genre: RouteType {
+        
+        var method: HTTPMethod { return .get }
+        var path: String { return "genre/movie/list" }
+        var parameters: [String : Any]? = ["api_key": Constants.Network.ApiKey]
+        
+    }
+    
 }

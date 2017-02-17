@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="163" id="ZkD-wa-BKK" customClass="MovieTableViewCell" customModule="MovieFan_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZkD-wa-BKK" id="ZvL-ZE-stC">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2001: a space odyssey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSV-5a-3oX">
+                        <rect key="frame" x="151" y="20" width="203" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="23" id="7rI-aG-KOo"/>
+                            <constraint firstAttribute="width" constant="203" id="x2q-wa-uYH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="19"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popularity: 8.12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECz-04-PKO">
+                        <rect key="frame" x="151" y="70" width="84" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="8sf-ct-Tc4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                        <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One of the best from Kubrick, a man embarcs on an epic journey lorem ipsum the thig is that the…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2z-JX-6AU">
+                        <rect key="frame" x="151" y="93" width="203" height="51"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="51" id="Ly8-jJ-bhj"/>
+                            <constraint firstAttribute="width" constant="203" id="kFd-bE-0m5"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="203" id="zLd-cU-7pS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2:50hs - Sci-Fi, Drama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYr-b2-gjZ">
+                        <rect key="frame" x="151" y="52" width="203" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="203" id="xM4-T4-ZAn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                        <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCV-LW-QPg">
+                        <rect key="frame" x="0.0" y="0.0" width="135" height="164"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="135" id="goa-T4-Arg"/>
+                            <constraint firstAttribute="height" constant="164" id="xfb-U6-wWa"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="WSV-5a-3oX" firstAttribute="top" secondItem="ZvL-ZE-stC" secondAttribute="top" constant="20" id="5Mk-Bh-fiy"/>
+                    <constraint firstItem="WSV-5a-3oX" firstAttribute="leading" secondItem="ZvL-ZE-stC" secondAttribute="leading" constant="150.30000000000001" id="C29-UE-8vj"/>
+                    <constraint firstItem="f2z-JX-6AU" firstAttribute="leading" secondItem="WSV-5a-3oX" secondAttribute="leading" id="DcA-Nq-vbh"/>
+                    <constraint firstItem="bYr-b2-gjZ" firstAttribute="leading" secondItem="WSV-5a-3oX" secondAttribute="leading" id="E7s-0u-FhF"/>
+                    <constraint firstItem="ECz-04-PKO" firstAttribute="leading" secondItem="WSV-5a-3oX" secondAttribute="leading" id="QnJ-LL-QPv"/>
+                    <constraint firstItem="wCV-LW-QPg" firstAttribute="leading" secondItem="ZvL-ZE-stC" secondAttribute="leading" id="WlA-lb-O1K"/>
+                    <constraint firstItem="bYr-b2-gjZ" firstAttribute="top" secondItem="WSV-5a-3oX" secondAttribute="bottom" constant="9" id="YjI-gd-qsh"/>
+                    <constraint firstItem="ECz-04-PKO" firstAttribute="top" secondItem="bYr-b2-gjZ" secondAttribute="bottom" constant="4" id="nhf-sA-FWe"/>
+                    <constraint firstItem="wCV-LW-QPg" firstAttribute="top" secondItem="ZvL-ZE-stC" secondAttribute="top" id="qzB-bJ-QJd"/>
+                    <constraint firstItem="f2z-JX-6AU" firstAttribute="top" secondItem="ECz-04-PKO" secondAttribute="bottom" constant="7" id="xlp-MG-HbW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="f2z-JX-6AU" id="ObI-Ix-tho"/>
+                <outlet property="movieImage" destination="wCV-LW-QPg" id="fG1-Su-AeO"/>
+                <outlet property="movieTitleLabel" destination="WSV-5a-3oX" id="hSk-at-0Jf"/>
+                <outlet property="popularityLabel" destination="ECz-04-PKO" id="YwG-lX-P8N"/>
+                <outlet property="releaseDateGenreLabel" destination="bYr-b2-gjZ" id="OCj-WM-mWV"/>
+            </connections>
+            <point key="canvasLocation" x="-22.5" y="-203.5"/>
+        </tableViewCell>
+    </objects>
+</document>

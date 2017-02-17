@@ -15,7 +15,6 @@ extension RouteType {
     var baseURL: URL { return Constants.Network.baseUrl }
     var manager: ManagerType { return NetworkManager.singleton  }
     var retryCount: Int { return 0 }
-    var parameters: [String: Any]? { return ["api_key": Constants.Network.ApiKey] }
 }
 
 extension URLRequestSetup {

@@ -64,7 +64,7 @@ extension Object {
     /** Must be called from main thread */
     func save(_ update: Bool = true) throws {
         let realm = self.realmInst()
-        try realm.write() {
+        try realm.write {
             realm.add(self, update: update)
         }
     }
@@ -75,8 +75,8 @@ extension Object {
             return
         }
         let realm = first.realmInst()
-        try realm.write() {
-            objects.forEach() { realm.add($0, update: update) }
+        try realm.write {
+            objects.forEach { realm.add($0, update: update) }
         }
     }
     
