@@ -37,7 +37,7 @@
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <action selector="applyButton:" destination="ugr-OF-bfr" eventType="touchUpInside" id="0Q7-Tb-dKb"/>
+                            <action selector="applyButtonTapped:" destination="ugr-OF-bfr" eventType="touchUpInside" id="6Rn-eE-wDq"/>
                         </connections>
                     </button>
                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPY-Su-CK0">
@@ -50,7 +50,7 @@
                             <color key="titleColor" red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>
-                            <action selector="clearFiltersButton:" destination="ugr-OF-bfr" eventType="touchUpInside" id="xrO-Z8-KYa"/>
+                            <action selector="clearButtonTapped:" destination="ugr-OF-bfr" eventType="touchUpInside" id="Reg-CY-7h1"/>
                         </connections>
                     </button>
                 </subviews>

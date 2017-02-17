@@ -6,70 +6,138 @@
 //  Copyright © 2017 'Xmartlabs SRL'. All rights reserved.
 //
 
-import UIKit
 import Eureka
+import UIKit
 
-class FiltersViewController: FormViewController {
+// MARK: - Protocol
+protocol FilterMoviesProtocol: class {
     
-    let genre = [Int]()
+    func filterMovies(selectedValues: [String: Any])
+    
+}
 
-    // MARK: - Action to close the modal view
-    @IBAction func dimiss(_ sender: Any) {
+class FiltersViewController: FormViewController, ApplyFiltersProtocol {
+    
+    // MARK: - Variables
+    weak var delegate: FilterMoviesProtocol?
+    
+    var genre: String = ""
+    var adultContent = false
+    var year = Date()
+    var selectedValues = [String: Any]()
+
+    // MARK: - Outlets
+    @IBOutlet weak var blurView: UIView!
+    
+    // MARK: - Close the modal view
+    @IBAction func dismissViewController(_ sender: UITapGestureRecognizer) {
+        if self.presentingViewController != nil {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     // MARK: - View Load
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         form
-            +++ Section(header: "Filter results", footer: "") { section in
-                var header = HeaderFooterView<UIView>(.nibFile(name: R.nib.headerFilterView.name, bundle: R.nib.headerFilterView.bundle))
-                header.height = { 63 }
-                section.header = header
+        +++ Section(header: "Filter results", footer: "") { section in
+            var header = HeaderFooterView<UIView>(.nibFile(name: R.nib.headerFilterCell.name, bundle: R.nib.headerFilterCell.bundle))
+            header.height = { 63 }
+            section.header = header
+        }
+        <<< PushRow<String>("GenreRow") {
+            $0.title = "Genre"
+            // Get the existing genders
+            var genreList = [String]()
+            GenreManager.instance.genresList.forEach { genre in
+                genreList.append(genre.genderName!)
             }
-            <<< MultipleSelectorRow<String> {
-                $0.title = "Genre"
-                $0.options = ["Thriller", "Horror", "Adventure", "Romance", "Science", "Fiction"]
-                $0.value = ["Any"]
-                $0.cell.height = { 60 }
-            }
-            
-            <<< PickerInlineRow<Date>("Year") { row in
-                row.title = row.tag
-                row.displayValueFor = { (rowValue: Date?) in
-                    return rowValue.map { "\(Calendar.current.component(.year, from: $0))" }
+            $0.options = genreList
+            $0.value = "Any"
+            $0.selectorTitle = "Choose a genre"
+            $0.cell.height = { 60 }
+            $0.presentationMode = .presentModally(
+                controllerProvider: ControllerProvider.callback { return SelectorViewController<String> { _ in } },
+                onDismiss: { [weak self] _ in
+                    self?.dismiss(animated: true, completion: nil)
                 }
-                row.options = []
-                var date = Date()
-                for _ in 1...10 {
-                    row.options.append(date)
-                    date = date.addingTimeInterval(60*60*24*365)
-                }
-                row.value = row.options[0]
-                row.cell.height = { 60 }
+            )
+        }
+        <<< PickerInlineRow<Date>("Year") { row in
+            row.title = row.tag
+            row.displayValueFor = { (rowValue: Date?) in
+                return rowValue.map { "\(Calendar.current.component(.year, from: $0))" }
             }
-            <<< SwitchRow {
-                $0.title = "Display adult content"
-                $0.value = false
-                $0.cell.height = { 60 }
+            row.options = []
+            var date = Date()
+            for _ in 1...10 {
+                row.options.append(date)
+                date = date.addingTimeInterval(-365*60*60*24)
             }
-            <<< FilterButtonRow() /* { row in
-               row.onClear = {
-                    
-                }
-                
-                row.onApply = {
-                    
-                } */
+            row.value = row.options[0]
+            row.cell.height = { 60 }
+            }
+        <<< SwitchRow("AdultContent") {
+            $0.title = "Display adult content"
+            $0.value = false
+            $0.cell.height = { 60 }
+            }
+        <<< FilterButtonRow {
+            $0.cell.delegate = self
+        }
     }
     
-    // MARK: - Clear all values
-    func clearAllSelectedValues() {
+    // MARK: - Animate the view
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UIView.animate(withDuration: 0.3, delay: 0.3,
+                       animations: {
+                        self.blurView.alpha = 0.74
+        },
+        completion: nil)
     }
     
-    // MARK: - Add selected values 
-    func applySelectedValues() {
-        //genre = MultipleSelectorRow.
-        //MovieControllerViewController.selectedFilters(genre: Int, year: Date, adultContent: Bool)
+    // MARK: - Apply the selected filters
+    func applyFilters() {
+        selectedValues = form.values()
+        
+        var filterSelected = [String: Any]()
+        var year = 2017
+        var genreId = 28
+        var adultContent = false
+        
+        // Get the selected year
+        if let date = selectedValues["Year"] as? Date {
+            let dateValue = date.year()
+            year = Int(dateValue)!
+        }
+        // Get the id from the selected genre
+        if selectedValues["GenreRow"] != nil {
+            if let genre = selectedValues["GenreRow"] as? String {
+                if genre != "Any" {
+                    genreId = GenreManager.instance.idFromGenreName(genreName: genre)
+                }
+            }
+        }
+        // Get the value of adult content
+        if let adult = selectedValues["AdultContent"] as? Bool {
+            adultContent = adult
+        }
+        
+        filterSelected["year"] = year
+        filterSelected["with_genres"] = genreId
+        filterSelected["include_adult"] = adultContent
+        
+        // Delegate to home the filters selected
+        delegate?.filterMovies(selectedValues: filterSelected)
+        self.dismiss(animated: true, completion: nil)
+        
     }
 
+    // MARK: - Cancel button tap
+    func cancelTap() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
