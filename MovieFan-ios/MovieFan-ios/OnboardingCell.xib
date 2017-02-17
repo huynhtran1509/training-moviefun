@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,14 +19,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="onboardingCell" id="YF2-qa-3Z5" customClass="OnboardingCollectionViewCell" customModule="MovieFan_ios" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="541"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="541"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbD-jg-956">
-                        <rect key="frame" x="62" y="431" width="252" height="59"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbD-jg-956">
+                        <rect key="frame" x="62" y="491.5" width="252" height="59"/>
                         <color key="backgroundColor" red="1" green="0.30588235294117649" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="59" id="ssK-y8-6z2"/>
@@ -37,53 +36,57 @@
                         <state key="normal" title="Let’s go!">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="buttonTapped:" destination="YF2-qa-3Z5" eventType="touchUpInside" id="0y7-WT-bg7"/>
+                        </connections>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="The onboarding is finished, you are now ready to enjoy movies like never before." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Wb3-8F-WpU">
-                        <rect key="frame" x="55" y="342" width="265" height="38"/>
-                        <color key="backgroundColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="38" id="G3o-wR-PCM"/>
-                            <constraint firstAttribute="width" constant="265" id="ln4-tM-rN6"/>
-                        </constraints>
-                        <color key="textColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Ready?" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-uA-zcn">
-                        <rect key="frame" x="132" y="291" width="111" height="30"/>
-                        <color key="backgroundColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" name="Kavoon-Regular" family="Kavoon" pointSize="26"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding3" translatesAutoresizingMaskIntoConstraints="NO" id="wwB-QT-vX3">
-                        <rect key="frame" x="64" y="4" width="247" height="247"/>
+                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding3" translatesAutoresizingMaskIntoConstraints="NO" id="wwB-QT-vX3">
+                        <rect key="frame" x="64" y="62" width="247" height="247"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="247" id="QEq-Jb-6Dl"/>
                             <constraint firstAttribute="width" constant="247" id="kqa-MN-4Hr"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51I-86-NHb">
+                        <rect key="frame" x="143" y="349" width="90" height="32.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="33" id="Zcb-BB-cyb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Kavoon-Regular" family="Kavoon" pointSize="26"/>
+                        <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The onboarding is finished, you are now ready to enjoy movies like never before." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZw-zW-KWZ">
+                        <rect key="frame" x="63" y="402.5" width="257" height="38"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="38" id="kCj-uO-3kb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                        <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="wwB-QT-vX3" firstAttribute="centerX" secondItem="YF2-qa-3Z5" secondAttribute="centerX" id="1Jf-Lu-V0e"/>
-                <constraint firstItem="Wb3-8F-WpU" firstAttribute="top" secondItem="Vsb-uA-zcn" secondAttribute="bottom" constant="21" id="7s9-qC-f0U"/>
-                <constraint firstItem="Vsb-uA-zcn" firstAttribute="centerX" secondItem="YF2-qa-3Z5" secondAttribute="centerX" id="HWR-6w-Yqm"/>
-                <constraint firstItem="Vsb-uA-zcn" firstAttribute="top" secondItem="wwB-QT-vX3" secondAttribute="bottom" constant="40" id="Xg6-Qw-reN"/>
-                <constraint firstItem="Wb3-8F-WpU" firstAttribute="centerX" secondItem="YF2-qa-3Z5" secondAttribute="centerX" id="djx-9k-TbL"/>
-                <constraint firstItem="MbD-jg-956" firstAttribute="top" secondItem="Wb3-8F-WpU" secondAttribute="bottom" constant="51" id="kUs-3C-ptq"/>
+                <constraint firstAttribute="trailing" secondItem="cZw-zW-KWZ" secondAttribute="trailing" constant="55" id="3Az-sL-bhz"/>
+                <constraint firstItem="wwB-QT-vX3" firstAttribute="top" secondItem="YF2-qa-3Z5" secondAttribute="top" constant="62" id="76a-2L-GYn"/>
+                <constraint firstItem="51I-86-NHb" firstAttribute="centerX" secondItem="YF2-qa-3Z5" secondAttribute="centerX" id="SDn-IR-xvX"/>
+                <constraint firstItem="cZw-zW-KWZ" firstAttribute="leading" secondItem="YF2-qa-3Z5" secondAttribute="leading" constant="63" id="gHK-8M-nji"/>
+                <constraint firstItem="cZw-zW-KWZ" firstAttribute="top" secondItem="51I-86-NHb" secondAttribute="bottom" constant="21" id="jYF-7A-fJJ"/>
+                <constraint firstItem="MbD-jg-956" firstAttribute="top" secondItem="cZw-zW-KWZ" secondAttribute="bottom" constant="51" id="kfi-fo-abE"/>
+                <constraint firstItem="51I-86-NHb" firstAttribute="top" secondItem="wwB-QT-vX3" secondAttribute="bottom" constant="40" id="mY7-VE-TKc"/>
                 <constraint firstItem="MbD-jg-956" firstAttribute="centerX" secondItem="YF2-qa-3Z5" secondAttribute="centerX" id="pNK-CU-Vlf"/>
-                <constraint firstAttribute="bottom" secondItem="MbD-jg-956" secondAttribute="bottom" constant="51" id="tfZ-og-Yqt"/>
             </constraints>
             <size key="customSize" width="256" height="145"/>
             <connections>
-                <outlet property="letsgoButton" destination="MbD-jg-956" id="V2C-Gf-HMQ"/>
-                <outlet property="onboardingImage" destination="wwB-QT-vX3" id="oMZ-9U-9sN"/>
-                <outlet property="principalTextField" destination="Vsb-uA-zcn" id="W1r-8C-Qag"/>
-                <outlet property="secondaryTextField" destination="Wb3-8F-WpU" id="Hch-yc-YeH"/>
+                <outlet property="letsgoButton" destination="MbD-jg-956" id="4wg-ZG-7kj"/>
+                <outlet property="onboardingImage" destination="wwB-QT-vX3" id="TDf-yZ-z61"/>
+                <outlet property="principalLabel" destination="51I-86-NHb" id="uj9-gd-jJp"/>
+                <outlet property="secondaryLabel" destination="cZw-zW-KWZ" id="tHN-oN-fOP"/>
             </connections>
-            <point key="canvasLocation" x="67" y="17.5"/>
+            <point key="canvasLocation" x="-10.5" y="-38"/>
         </collectionViewCell>
     </objects>
     <resources>

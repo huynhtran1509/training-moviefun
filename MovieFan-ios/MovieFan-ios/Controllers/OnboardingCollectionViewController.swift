@@ -8,68 +8,76 @@
 
 import UIKit
 
-private let reuseIdentifier = "onboardingCell"
+class OnboardingCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-class OnboardingCollectionViewController: UICollectionViewController {
+    // MARK: - Struct boarding
+    struct Boarding {
+        
+        var onboardingImage: UIImage
+        var principalText: String
+        var secondaryText: String
+        
+    }
     
-    // MARK: - Images
-    var onboardingImages = [String]()
+    // MARK: - Variables
+    private let reuseIdentifier = "onboardingCell"
+    var boardings: [Boarding] = []
+        
+    // MARK: - Outlets
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
 
-    // MARK: - View Load
+    // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        onboardingImages = ["onboarding1.png", "onboarding2.png", "onboarding3.png"]
-    }
 
-    // MARK: - Prepare for segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        setData()
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
     }
-
-    // MARK: UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return onboardingImages.count
-    }
-
-    /*
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
+    // MARK: - Add data to the boardings
+    func setData() {
+        collectionView.register(R.nib.onboardingCell(), forCellWithReuseIdentifier: reuseIdentifier)
+        boardings.append(Boarding(onboardingImage: R.image.onboarding1()!, principalText: "For movie lovers", secondaryText: "View what’s in theaters, trending movies and much more."))
+        boardings.append(Boarding(onboardingImage: R.image.onboarding2()!, principalText: "Indiana would use it", secondaryText: "It’s just so sleek and smooth. MovieFan is for you, the fan of movies."))
+        boardings.append(Boarding(onboardingImage: R.image.onboarding3()!, principalText: "Ready?", secondaryText: "The onboarding is finished, you are now ready to enjoy movies like never before."))
+    }
+
+    // MARK: - UICollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.onboardingCell, for: indexPath) ?? OnboardingCollectionViewCell()
+        cell.letsgoButton.isHidden = true
+        cell.onboardingImage.image = boardings[indexPath.item].onboardingImage
+        cell.principalLabel.text = boardings[indexPath.item].principalText
+        cell.secondaryLabel.text = boardings[indexPath.item].secondaryText
+        if indexPath.row == 2 {
+            cell.letsgoButton.isHidden = false
+            cell.delegate = self
+        }
         return cell
-    } */
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
     }
 
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return boardings.count
     }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    // MARK: - Scroll onboarding
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard let collection = collectionView else { return }
+        let page = Int(collection.contentOffset.x / collection.bounds.width)
+        pageControl.currentPage = page
     }
-    */
 
+}
+
+// MARK: - Present HomeController
+extension OnboardingCollectionViewController: OnboardingButtonTapped {
+    
+    func onboardingButtonDidTap() {
+        if let homeVC = R.storyboard.main.homeController() {
+            self.present(homeVC, animated: true)
+        }
+    }
+    
 }

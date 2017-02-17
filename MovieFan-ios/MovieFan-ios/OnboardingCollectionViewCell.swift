@@ -8,12 +8,43 @@
 
 import UIKit
 
+// MARK: - Protocol
+protocol OnboardingButtonTapped: class {
+    
+    func onboardingButtonDidTap()
+    
+}
+
+// MARK: - OnboardingCollectionViewCell class
 class OnboardingCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Variables
+    weak var delegate: OnboardingButtonTapped?
+    
     // MARK: - Outlets
+    @IBOutlet weak var principalLabel: UILabel! {
+        didSet {
+            principalLabel.font = UIFont.kavoonRegular(26)
+        }
+    }
+
+    @IBOutlet weak var secondaryLabel: UILabel! {
+        didSet {
+            secondaryLabel.font = UIFont.latoRegular(14)
+        }
+    }
+
     @IBOutlet weak var onboardingImage: UIImageView!
-    @IBOutlet weak var principalTextField: UITextField!
-    @IBOutlet weak var secondaryTextField: UITextField!
-    @IBOutlet weak var letsgoButton: UIButton!
+    
+    @IBOutlet weak var letsgoButton: UIButton! {
+        didSet {
+            letsgoButton.layer.cornerRadius = 25
+        }
+    }
+    
+    // MARK: - Actions
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        delegate?.onboardingButtonDidTap()
+    }
     
 }

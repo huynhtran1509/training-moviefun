@@ -9,8 +9,19 @@
 import Foundation
 import Eureka
 
+// MARK: - Protocol
+protocol ApplyFiltersProtocol: class {
+    
+    func applyFilters()
+    func cancelTap()
+    
+}
+
 public class FilterButtonsCell: Cell<String>, CellType {
 
+    // MARK: - Variables
+    weak var delegate: ApplyFiltersProtocol?
+    
     // MARK: - Outlets
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
@@ -26,15 +37,15 @@ public class FilterButtonsCell: Cell<String>, CellType {
     }
     
     // MARK: - Actions
-    @IBAction func clearButtonTapped(_ sender: FiltersViewController) {
-        
+    @IBAction func clearButtonTapped(_ sender: UIButton) {
+        delegate?.cancelTap()
     }
     
-    @IBAction func applyButtonTapped(_ sender: FiltersViewController) {
-        
+    @IBAction func applyButtonTapped(_ sender: UIButton) {
+        delegate?.applyFilters()
     }
     
-    // MARK: - Func
+    // MARK: - Setup button section
     open override func setup() {
         super.setup()
         
