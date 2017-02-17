@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -18,11 +19,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="163" id="ZkD-wa-BKK" customClass="MovieTableViewCell" customModule="MovieFan_ios" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="202" id="ZkD-wa-BKK" customClass="MovieTableViewCell" customModule="MovieFan_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZkD-wa-BKK" id="ZvL-ZE-stC">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2001: a space odyssey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSV-5a-3oX">
@@ -44,13 +45,12 @@
                         <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One of the best from Kubrick, a man embarcs on an epic journey lorem ipsum the thig is that the…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2z-JX-6AU">
-                        <rect key="frame" x="151" y="93" width="203" height="51"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="200" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2z-JX-6AU">
+                        <rect key="frame" x="151" y="93" width="203" height="90.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="51" id="Ly8-jJ-bhj"/>
                             <constraint firstAttribute="width" constant="203" id="kFd-bE-0m5"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="203" id="zLd-cU-7pS"/>
                         </constraints>
+                        <string key="text">One of the best from KubricOne of the best from KubricOne of the best from KubricOne of the best from KubricOne of the best from KubricOne of the best from KubricOne of the best from KubricOne of the best from KubricOne of the best from Kubrick, a man embarcs on an epic journey lorem ipsum the thig is that the…</string>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -64,16 +64,17 @@
                         <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCV-LW-QPg">
-                        <rect key="frame" x="0.0" y="0.0" width="135" height="164"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCV-LW-QPg">
+                        <rect key="frame" x="0.0" y="0.0" width="135" height="202"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="135" id="goa-T4-Arg"/>
-                            <constraint firstAttribute="height" constant="164" id="xfb-U6-wWa"/>
+                            <constraint firstAttribute="height" constant="202" id="xfb-U6-wWa"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="WSV-5a-3oX" firstAttribute="top" secondItem="ZvL-ZE-stC" secondAttribute="top" constant="20" id="5Mk-Bh-fiy"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="f2z-JX-6AU" secondAttribute="bottom" constant="10" id="8Lz-cT-im7"/>
                     <constraint firstItem="WSV-5a-3oX" firstAttribute="leading" secondItem="ZvL-ZE-stC" secondAttribute="leading" constant="150.30000000000001" id="C29-UE-8vj"/>
                     <constraint firstItem="f2z-JX-6AU" firstAttribute="leading" secondItem="WSV-5a-3oX" secondAttribute="leading" id="DcA-Nq-vbh"/>
                     <constraint firstItem="bYr-b2-gjZ" firstAttribute="leading" secondItem="WSV-5a-3oX" secondAttribute="leading" id="E7s-0u-FhF"/>
@@ -92,7 +93,7 @@
                 <outlet property="popularityLabel" destination="ECz-04-PKO" id="YwG-lX-P8N"/>
                 <outlet property="releaseDateGenreLabel" destination="bYr-b2-gjZ" id="OCj-WM-mWV"/>
             </connections>
-            <point key="canvasLocation" x="-22.5" y="-203.5"/>
+            <point key="canvasLocation" x="-22.5" y="-184"/>
         </tableViewCell>
     </objects>
 </document>

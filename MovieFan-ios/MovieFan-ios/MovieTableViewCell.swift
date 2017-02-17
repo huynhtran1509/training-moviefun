@@ -21,6 +21,7 @@ class MovieTableViewCell: UITableViewCell {
         super.prepareForReuse()
         
         //Reset existing data
+        movieImage.af_cancelImageRequest()
         movieImage.image = nil
         movieTitleLabel.text = nil
         releaseDateGenreLabel.text = nil
@@ -32,19 +33,12 @@ class MovieTableViewCell: UITableViewCell {
     func configuration(with movie: Movie ) {
         // Convert string image path to URL
         guard let path = movie.imagePath else { return }
-        let imagePath: String = "https://image.tmdb.org/t/p/original" + path
+        let sizeOption = "w500"
+        let imagePath = "https://image.tmdb.org/t/p/\(sizeOption)/\(path)"
         let fileUrl = URL(string: imagePath)
         if let imageMovie = fileUrl {
-            DispatchQueue.global(qos: .background).async { [weak self] in
-                do {
-                    let imageData = try Data(contentsOf: imageMovie as URL)
-                    DispatchQueue.main.async {
-                        self?.movieImage.image = UIImage(data: imageData)
-                    }
-                } catch {
-                    print(error)
-                }
-            }
+            // alamofire charged to do the deque
+            movieImage.af_setImage(withURL: imageMovie)
         }
         movieTitleLabel.text = movie.title
         
