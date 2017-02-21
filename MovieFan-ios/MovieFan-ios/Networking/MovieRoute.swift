@@ -6,9 +6,9 @@
 //  Copyright © 2017 'Xmartlabs SRL'. All rights reserved.
 //
 
-import UIKit
-import Opera
 import Alamofire
+import Opera
+import UIKit
 
 struct TheMovieDbAPI {
     

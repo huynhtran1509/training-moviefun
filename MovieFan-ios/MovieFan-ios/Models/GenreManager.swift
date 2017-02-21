@@ -36,8 +36,7 @@ class GenreManager {
             .rx_collection("genres")
             .subscribe(onNext: { [unowned self] (genres: [Genre]) in
                 self.genresList.append(contentsOf: genres)
-                let genresLoaded = true
-                completionHandler(genresLoaded)
+                completionHandler(true)
             }, onError: { error in
                 print(error)
             })

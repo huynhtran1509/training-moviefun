@@ -12,7 +12,7 @@ import RxSwift
 import UIKit
 import XLSwiftKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate {
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -29,7 +29,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Variables
-    private let reuseIdentifier = "movieCell"
     let disposeBag = DisposeBag()
     let realm = try! Realm()
     var movies: Results<Movie> {
@@ -42,7 +41,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Movie cell equal to the movieCell xib
         tableView.register(R.nib.movieCell)
-        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -61,31 +59,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.backgroundColor = .mitBlack
     }
     
-    // MARK: - TableView Datasource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 202
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? MovieTableViewCell else {
-            return MovieTableViewCell()
-        }
-        cell.backgroundColor = .mitWhite
-        
-        let movie = movies[indexPath.row]
-        cell.configuration(with: movie)
-        return cell
-    }
-    
     // MARK: - Get movies
     func getMovies(parameters: [String : Any]) {
         LoadingIndicator.show()
         
-        TheMovieDbAPI.Movies.Discover(parameters: parameters).rx_collection("results")
+        TheMovieDbAPI.Movies.Discover(parameters: parameters)
+            .rx_collection("results")
             .subscribe(onNext: { [unowned self] (movies: [Movie]) in
                 try! self.realm.write {
                     //Delete movies stored
@@ -115,10 +94,33 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 }
 
+// MARK: - Datasource extension
+extension HomeViewController: UITableViewDataSource {
+    
+    // MARK: - TableView Datasource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 202
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.movieCell, for: indexPath) ?? MovieTableViewCell()
+        let movie = movies[indexPath.row]
+        cell.configuration(with: movie)
+        
+        cell.backgroundColor = .mitWhite
+        return cell
+    }
+
+}
+
 // MARK: - Update the parameters with the selected filter values
 extension HomeViewController: FilterMoviesProtocol {
     
-    func filterMovies(selectedValues: [String : Any]) {
+    func didSelectFilters(selectedValues: [String : Any]) {
         getMovies(parameters: selectedValues)
     }
     

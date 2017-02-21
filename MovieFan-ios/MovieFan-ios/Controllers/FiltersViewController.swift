@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Protocol
 protocol FilterMoviesProtocol: class {
     
-    func filterMovies(selectedValues: [String: Any])
+    func didSelectFilters(selectedValues: [String: Any])
     
 }
 
@@ -21,9 +21,6 @@ class FiltersViewController: FormViewController, ApplyFiltersProtocol {
     // MARK: - Variables
     weak var delegate: FilterMoviesProtocol?
     
-    var genre: String = ""
-    var adultContent = false
-    var year = Date()
     var selectedValues = [String: Any]()
 
     // MARK: - Outlets
@@ -31,9 +28,7 @@ class FiltersViewController: FormViewController, ApplyFiltersProtocol {
     
     // MARK: - Close the modal view
     @IBAction func dismissViewController(_ sender: UITapGestureRecognizer) {
-        if self.presentingViewController != nil {
-            self.dismiss(animated: true, completion: nil)
-        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - View Load
@@ -77,12 +72,12 @@ class FiltersViewController: FormViewController, ApplyFiltersProtocol {
             }
             row.value = row.options[0]
             row.cell.height = { 60 }
-            }
+        }
         <<< SwitchRow("AdultContent") {
             $0.title = "Display adult content"
             $0.value = false
             $0.cell.height = { 60 }
-            }
+        }
         <<< FilterButtonRow {
             $0.cell.delegate = self
         }
@@ -104,8 +99,8 @@ class FiltersViewController: FormViewController, ApplyFiltersProtocol {
         selectedValues = form.values()
         
         var filterSelected = [String: Any]()
-        var year = 2017
-        var genreId = 28
+        var year: Int?
+        var genreId: Int?
         var adultContent = false
         
         // Get the selected year
@@ -126,18 +121,23 @@ class FiltersViewController: FormViewController, ApplyFiltersProtocol {
             adultContent = adult
         }
         
-        filterSelected["year"] = year
-        filterSelected["with_genres"] = genreId
+        if year != nil {
+            filterSelected["year"] = year
+        }
+        if genreId != nil {
+            filterSelected["with_genres"] = genreId
+        }
         filterSelected["include_adult"] = adultContent
         
         // Delegate to home the filters selected
-        delegate?.filterMovies(selectedValues: filterSelected)
+        delegate?.didSelectFilters(selectedValues: filterSelected)
         self.dismiss(animated: true, completion: nil)
         
     }
 
     // MARK: - Cancel button tap
     func cancelTap() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
+    
 }

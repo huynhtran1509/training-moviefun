@@ -37,16 +37,16 @@ class MovieTableViewCell: UITableViewCell {
         let imagePath = "https://image.tmdb.org/t/p/\(sizeOption)/\(path)"
         let fileUrl = URL(string: imagePath)
         if let imageMovie = fileUrl {
-            // alamofire charged to do the deque
+            // alamofire charged to do the dequeue
             movieImage.af_setImage(withURL: imageMovie)
         }
         movieTitleLabel.text = movie.title
         
         // Convert the int genres ids to string
-        let cantGenres = movie.genresIds.count
         var genresList = [String]()
-        for index in 0...cantGenres-1 {
-            let id = movie.genresIds[index].genreId
+        
+        movie.genresIds.forEach { genre in
+            let id = genre.genreId
             let genreName = GenreManager.instance.valueFromGenreId(genreId: id)
             genresList.append(genreName)
         }

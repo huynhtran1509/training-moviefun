@@ -24,17 +24,6 @@ final class Genre: Object {
         self.genderName = genderName
     }
     
-    // MARK: - Save the genres
-    func save() {
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.add(self)
-            }
-        } catch let error as NSError {
-            fatalError(error.localizedDescription)
-        }
-    }
 }
 
 // MARK: - Decodable extension
